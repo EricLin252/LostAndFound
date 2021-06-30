@@ -1,0 +1,61 @@
+body{
+	background-image: url("../img/q1_bg.jpg");
+	background-size: auto 100%;
+	background-position: left center;
+}
+
+#map_btn{
+	top: 30px;
+	left: 5%;
+}
+
+#tip_btn{
+	top: 150px;
+	left: 5%;
+}
+
+.tip_btn_open{
+	-webkit-transform: translate(340%, -120px);
+	transform: translate(340%, -120px);
+}
+
+#content{
+	position: absolute;
+	top: 15%;
+	right: 5%;
+	width: 60%;
+	max-height: 60%;
+	overflow: scroll;
+}
+
+#title{
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+#selection{
+	position: absolute;
+	width: 50%;
+	top: 80%;
+	right: 5%;
+}
+
+.multiselect{
+	display: block;
+	margin: 10px auto;
+	width: 100%;
+	font-size: 12px;
+	line-height: 20px;
+	height: 20px;
+	color: whitesmoke;
+	background-color: rgb(234, 104, 116);
+	box-shadow: 2px 2px 3px 3px rgba(100, 100, 100, 0.7);
+}
+
+.multiselect:hover{
+	background-color: rgb(174, 194, 229);
+}
+
+#finish_close{
+	background-image: url("../img/t1.png");
+}

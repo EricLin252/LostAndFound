@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<title>小刺蝟的失物招領-找回遺落的自己</title>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script src="js/migrate.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
+	<script src="js/database.js"></script>
+	<script src="js/login_and_makeAccount.js"></script>
+	<script src="js/db_login_mkAccount.js"></script>
+	<link rel="stylesheet" href="css/normal.css">
+	<link rel="stylesheet" href="css/login_and_makeAccount.css">
+</head>
+<body>
+	<div id="loading">
+		<div id="loading_block">
+			<div class="square" id="loading_bg"></div>
+			<div id="loading_script">Loading...<br>請直放手機遊玩</div>
+		</div>
+	</div>
+	<div id="user_data" class="box_left">
+		<div id="change_page" @click="change_page" :class="btn_class">
+			<div id="change_page_btn" class="square" :style="btn_style"></div>
+			<div id="change_page_text" v-html="btn_text"></div>
+		</div>
+		<div id="login_page">
+			<input type="email" id="login_email" v-model="email" placeholder="email" oninput="value=value.replace(/[\u4E00-\u9FA5]/g,'')"><br>
+			<input :type="visible" id="login_password" v-model="password" placeholder="密碼" oninput="value=value.replace(/[\u4E00-\u9FA5]/g,'')"><button id="login_eye" @click="eye_switch">顯示</button><br>
+			<button id="login" @click="login">登入</button><br>
+			<button id="forgot_pwd" @click="forgot_pwd">忘記密碼</button><br>
+			<a id="problem_sheet" href="https://forms.gle/v1349j8U82hMoF61A" target="_blank">登入或創建帳號有問題？</a><br>
+			<div class="square" id="footer_left"></div>
+			<div class="square" id="footer_right"></div>
+		</div><div id="makeAccount_page">
+			<div id="mkAccount_text">
+				<p style="font-size: 16px; width: 100%; text-decoration: underline;">有玩過前作：冰磚圖鑑大搜查的人可以直接沿用帳號喔！</p><br>
+				小刺蝟共遺失了8樣物品，創建帳號取得指南針後，「按照順序」找到8樣遺失物即可抽獎，並有機會兌換到限量茶壜飲品兌換券喔<br>
+				<span style="color: chocolate;">＊遊戲說明：</span><br>
+				1. 創建帳號成功即可獲得指南針!<br>
+				2. 「按照順序」走到遊戲地圖上相對應的地點<br>
+				3. 掃描QRcode，針對題目指引完成闖關條件後，即可尋回一樣物品。<br>
+				4. 成功找回8樣物品會跳出「闖關完成抽獎請按我」視窗，點擊後填完問卷，即可參加抽獎！<br>
+				5. 還可到諮商中心櫃台(活動中心3F)領取限量茶壜飲品兌換券（已兌換完畢!!）<br>
+
+				<span style="color: chocolate;">*抽獎好禮:</span><br>
+				1.小蒙牛雙人餐券<br>
+				2.威秀雙人電影票<br>
+				3. SCANDINAVIAN FOREST刺蝟側背小包<br>
+				4. Starbucks 刺蝟零錢包<br>
+			</div>
+			<select id="mkAccount_type" v-model="type">
+				<option value="student" selected>交大學生</option>
+				<option value="teacher">交大教職員</option>
+				<option value="other">校外人士</option>
+			</select><br>
+			<input type="text" id="mkAccount_account" v-model="account" :placeholder="placeholder_type" oninput="value=value.replace(/[\u4E00-\u9FA5]/g,'')"><br>
+			<input type="email" id="mkAccount_email" v-model="email" placeholder="email" oninput="value=value.replace(/[\u4E00-\u9FA5]/g,'')"><br>
+			<input type="password" id="mkAccount_password" v-model="password" placeholder="設定密碼" oninput="value=value.replace(/[\u4E00-\u9FA5]/g,'')"><br>
+			<input :type="visible" id="mkAccount_checkpwd" v-model="check" placeholder="請再次輸入密碼" oninput="value=value.replace(/[\u4E00-\u9FA5]/g,'')"><button id="mkAccount_eye" @click="eye_switch">顯示</button><br>
+			<button id="makeAccount" @click="makeAccount">創建帳號</button>
+		</div>
+	</div>
+	<a href="https://counsel.sa.nctu.edu.tw/" id="website" target="new_window">交大諮商中心</a>
+</body>
+</html>

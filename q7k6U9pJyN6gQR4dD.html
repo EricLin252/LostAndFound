@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>小刺蝟的失物招領-隨身碟裡的秘密</title>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script src="js/migrate.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
+	<script src="js/database.js"></script>
+	<script src="js/question.js"></script>
+	<script src="js/db_normal.js"></script>
+	<link rel="stylesheet" href="css/normal.css">
+	<link rel="stylesheet" href="css/question.css">
+	<link rel="stylesheet" href="css/q7.css">
+</head>
+<body>
+	<div id="loading">
+		<div id="loading_block">
+			<div class="square" id="loading_bg"></div>
+			<div id="loading_script">Loading...<br>請直放手機遊玩</div>
+		</div>
+	</div>
+	<a class="square infor_btn" id="map_btn" href="index.html"><span>回地圖</span></a>
+	<div id="background"></div>
+	<button class="square infor_btn" id="tip_btn"><span>小提示</span></button>
+	<div class="infor" id="tip">
+		<p class="infor_title" style="margin: 10px; margin-top: 0px;">小提示</p>
+		請觀賞播放中的影片，並在海報紙上寫下你的感想。
+	</div>
+	<div class="infor" id="finish_script">
+		<span>
+			<p class="infor_title" style="margin: 10px; margin-top: 0px;">完成任務</p>
+			旁觀者往往在霸凌事件中扮演著關鍵的角色，別以為自己不是主要的霸凌者，就可以置身事外，有時候你的冷漠，對被霸凌者來說，也是一種傷害與霸凌，而霸凌風氣不斷延燒時，你也可能成為下一個受害者，如果可以，請別再扮演沉默的幫兇，請一起挺身而出，為受害者發聲！
+		</span>
+		<button class="square" id="finish_close"><span>獲得物品</span></button>
+	</div>
+	<div id="content">
+		<h1 id="title">隨身碟裡的秘密</h1>
+		<div id="script">
+			你知道大部分人目睹霸凌事件都如何反應嗎？小刺蝟歷經班上的嚴重霸凌後，對此也很好奇。<br>
+			他遺失的隨身碟中存放著一部他蒐集來的影片，請觀賞隨身碟中的影片，並告訴小刺蝟影片在說什麼，好幫助小刺蝟辨識這是否是他的隨身碟，在找回遺失物的同時，也找回對他人的信賴感。
+		</div>
+	</div>
+	<div id="selection">
+		<button class="multiselect" @click="answerSubmit('v')" v-if="have_ans('v')" :disabled="unable('v')">完成</button>
+	</div>
+	<a href="http://counsel.sa.nctu.edu.tw" id="website" target="new_window">交大諮商中心</a>
+</body>
+</html>

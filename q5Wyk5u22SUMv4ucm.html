@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>小刺蝟的失物招領-虛擬的攻擊</title>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script src="js/migrate.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
+	<script src="js/database.js"></script>
+	<script src="js/question.js"></script>
+	<script src="js/db_normal.js"></script>
+	<link rel="stylesheet" href="css/normal.css">
+	<link rel="stylesheet" href="css/question.css">
+	<link rel="stylesheet" href="css/q5.css">
+</head>
+<body>
+	<div id="loading">
+		<div id="loading_block">
+			<div class="square" id="loading_bg"></div>
+			<div id="loading_script">Loading...<br>請直放手機遊玩</div>
+		</div>
+	</div>
+	<a class="square infor_btn" id="map_btn" href="index.html"><span>回地圖</span></a>
+	<div id="background"></div>
+	<button class="square infor_btn" id="tip_btn"><span>小提示</span></button>
+	<div class="infor" id="tip">
+		<p class="infor_title" style="margin: 10px; margin-top: 0px;">小提示</p>
+		請觀看翻閱平板內容，並從選項當中，選出你會如何處理與面對網路上的不實評論與謠言。
+	</div>
+	<div class="infor" id="finish_script">
+		<span>
+			<p class="infor_title" style="margin: 10px; margin-top: 0px;">完成任務</p>
+			假設你不幸在人際交往的過程中，被別人誤會進而在網路散撥關於你的不實謠言，不安、恐懼、擔心別人對自己的看法都是很正常的感受，不要忘了還有諮商中心可以守護你的情緒與挫折，而軍訓室也有反霸凌小組可以幫助你喔！<br>
+			面對網路上的攻擊，你可以試著這樣應對：<br>
+			1. 不與對方謾罵，也不要張貼讓對方不舒服的言論<br>
+			2. 先以訊息告訴對方你的感受，請對方刪除讓人不舒服的貼文<br>
+			3. 若未改善，則將讓人不舒服的內容截圖下來，留做證據<br>
+			4. 使用社群網站的「解除朋友關係」或「封鎖」等功能，避免繼續看到不舒服的貼文<br>
+			5. 尋求校內外多方管道及單位的協助<br>
+			<br>
+			＊軍訓室反映、申訴專線：(03)513-1339<br>
+			＊教育部防制校園霸凌專線：0800-200-885<br>
+			＊iWIN網路內容防護機構：(02)3393-1885<br>
+			＊法律扶助諮詢：(02)412-8518
+		</span>
+		<button class="square" id="finish_close"><span>獲得物品</span></button>
+	</div>
+	<div id="content">
+		<h1 id="title">虛擬的攻擊</h1>
+		<div id="script">
+			小刺蝟因為同學在網路上談論他的事情，而對小刺蝟的心情及生活產生了巨大的影響，讓小刺蝟無法專心於課業，每天焦慮的滑手機、看同學的貼文。<br>
+			想想看如果是你遇到類似的事情，你會選擇怎麼處理呢？
+		</div>
+	</div>
+	<div id="selection">
+		<button class="multiselect" @click="answerSubmit(1)" v-if="have_ans(1)" :disabled="unable(1)">幫自己講話，直接在網路上開戰</button>
+		<button class="multiselect" @click="answerSubmit(2)" v-if="have_ans(2)" :disabled="unable(2)">視而不見，不採取任何行動</button>
+		<button class="multiselect" @click="answerSubmit(3)" v-if="have_ans(3)" :disabled="unable(3)">告訴對方你的感受，並請對方撤文</button>
+		<button class="multiselect" @click="answerSubmit(4)" v-if="have_ans(4)" :disabled="unable(4)">截圖留證據，尋求相關單位的協助</button>
+	</div>
+	<a href="http://counsel.sa.nctu.edu.tw" id="website" target="new_window">交大諮商中心</a>
+</body>
+</html>

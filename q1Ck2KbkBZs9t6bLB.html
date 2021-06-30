@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>小刺蝟的失物招領-瓜沉心底</title>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script src="js/migrate.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
+	<script src="js/database.js"></script>
+	<script src="js/question.js"></script>
+	<script src="js/db_normal.js"></script>
+	<link rel="stylesheet" href="css/normal.css">
+	<link rel="stylesheet" href="css/question.css">
+	<link rel="stylesheet" href="css/q1.css">
+</head>
+<body>
+	<div id="loading">
+		<div id="loading_block">
+			<div class="square" id="loading_bg"></div>
+			<div id="loading_script">Loading...<br>請直放手機遊玩</div>
+		</div>
+	</div>
+	<a class="square infor_btn" id="map_btn" href="index.html"><span>回地圖</span></a>
+	<div id="background"></div>
+	<button class="square infor_btn" id="tip_btn"><span>小提示</span></button>
+	<div class="infor" id="tip">
+		<p class="infor_title" style="margin: 10px; margin-top: 0px;">小提示</p>
+		請在西瓜便利貼寫下：當你感到壓力時，除了深陷在問題中不斷思考解決方法，你還會做些什麼活動來抒緩心情與壓力呢？<br>
+		（寫完貼上海報架，並按下完成，即可完成本關喔！）
+	</div>
+	<div class="infor" id="finish_script">
+		<span>
+			<p class="infor_title" style="margin: 10px; margin-top: 0px;">完成任務</p>
+			壓力能促使成長與改變，卻也能壓垮一個人、使人跌入無盡深淵。<br>
+			因此時時覺察並舒緩它們是很重要的喔！<br>
+			當感到喘不過氣，維持自己紓壓習慣的同時，不妨也看看、嘗試他人的紓壓方法，讓自己有更多照顧自己的方式。<br>
+			希望它們都能帶你將「壓力」轉化為「助力」，讓你朝向心目中喜愛的自己一步步邁進！
+		</span>
+		<button class="square" id="finish_close"><span>獲得物品</span></button>
+	</div>
+	<div id="content">
+		<h1 id="title">瓜沉心底</h1>
+		<div id="script">
+			回到家後，刺蝟爸媽開始數落著小刺蝟的不積極多麼讓家裡顏面盡失。<br>
+			比起憤怒，小刺蝟更看到爸媽眼中的失望，並為自己無以回報爸媽的用心栽培而感到羞愧。<br>
+			他覺得此刻的自己好渺小…<br>
+			你也曾像小刺蝟一樣，面對他人的期待而感到無力沉重嗎？這時候的你會做什麼讓自己好過一些呢？<br>
+			請用西瓜便利貼寫下你面對人際壓力時的紓壓方法！
+		</div>
+	</div>
+	<div id="selection">
+		<button class="multiselect" @click="answerSubmit('v')" v-if="have_ans('v')" :disabled="unable('v')">完成</button>
+	</div>
+	<a href="http://counsel.sa.nctu.edu.tw" id="website" target="new_window">交大諮商中心</a>
+</body>
+</html>

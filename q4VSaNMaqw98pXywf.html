@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>小刺蝟的失物招領-暖心日記本</title>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script src="js/migrate.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
+	<script src="js/database.js"></script>
+	<script src="js/question.js"></script>
+	<script src="js/db_normal.js"></script>
+	<link rel="stylesheet" href="css/normal.css">
+	<link rel="stylesheet" href="css/question.css">
+	<link rel="stylesheet" href="css/q4.css">
+</head>
+<body>
+	<div id="loading">
+		<div id="loading_block">
+			<div class="square" id="loading_bg"></div>
+			<div id="loading_script">Loading...<br>請直放手機遊玩</div>
+		</div>
+	</div>
+	<a class="square infor_btn" id="map_btn" href="index.html"><span>回地圖</span></a>
+	<div id="background"></div>
+	<button class="square infor_btn" id="tip_btn"><span>小提示</span></button>
+	<div class="infor" id="tip">
+		<p class="infor_title" style="margin: 10px; margin-top: 0px;">小提示</p>
+		請閱讀小刺蝟的心情日記，想像自己若身為他的好朋友，會對他說些什麼，並在「日記本的」空白頁面寫下對他加油打氣的話！！
+	</div>
+	<div class="infor" id="finish_script">
+		<span>
+			<p class="infor_title" style="margin: 10px; margin-top: 0px;">完成任務</p>
+			霸凌者、旁觀者、被霸凌者都需要被討厭的勇氣。<br>
+			霸凌者需要的是相信自己無需透過霸凌手段來獲得團體中的地位。<br>
+			旁觀者可以做的是，在不涉及危險的情況下，鼓起勇氣讓被霸凌者知道自己不是友誼網絡中的一座孤島。<br>
+			而被霸凌者，請相信友誼網絡是可能變動的，眼前的狀況並非永恆，請勇敢求援而非放棄希望。<br>
+			<br>
+			資料來源: <br>
+			<a target="_blank" href="https://buzzorange.com/2017/04/10/the-system-of-bullying/">不是孩子沒同理心才有霸凌！這是青少年求生存的「地位競爭戰」</a>
+		</span>
+		<button class="square" id="finish_close"><span>獲得物品</span></button>
+	</div>
+	<div id="content">
+		<h1 id="title">暖心日記本</h1>
+		<div id="script">
+			小刺蝟和大家的相處似乎不太順利，總覺得大家跟他之間很有隔閡，甚至有人會在背後說他壞話，讓他心都碎了😥<br>
+			小刺蝟想與你交換日記，但他弄丟了日記本，請找到他的日記本，閱讀他的心情後，寫下對他的支持與鼓勵，讓他找回日記本的同時，也找回滿滿的勇氣！
+		</div>
+	</div>
+	<div id="selection">
+		<button class="multiselect" @click="answerSubmit('v')" v-if="have_ans('v')" :disabled="unable('v')">完成</button>
+	</div>
+	<a href="http://counsel.sa.nctu.edu.tw" id="website" target="new_window">交大諮商中心</a>
+</body>
+</html>

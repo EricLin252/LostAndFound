@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>小刺蝟的失物招領-鏡子裡的尖刺</title>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script src="js/migrate.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
+	<script src="js/database.js"></script>
+	<script src="js/question.js"></script>
+	<script src="js/db_normal.js"></script>
+	<link rel="stylesheet" href="css/normal.css">
+	<link rel="stylesheet" href="css/question.css">
+	<link rel="stylesheet" href="css/q6.css">
+</head>
+<body>
+	<div id="loading">
+		<div id="loading_block">
+			<div class="square" id="loading_bg"></div>
+			<div id="loading_script">Loading...<br>請直放手機遊玩</div>
+		</div>
+	</div>
+	<a class="square infor_btn" id="map_btn" href="index.html"><span>回地圖</span></a>
+	<div id="background"></div>
+	<button class="square infor_btn" id="tip_btn"><span>小提示</span></button>
+	<div class="infor" id="tip">
+		<p class="infor_title" style="margin: 10px; margin-top: 0px;">小提示</p>
+		請挑選一句鏡子上的標籤，拿起旁邊箱子的便條紙與筆，試著以正向的角度改寫或是回應，完成後貼至海報上。
+	</div>
+	<div class="infor" id="finish_script">
+		<span>
+			<p class="infor_title" style="margin: 10px; margin-top: 0px;">完成任務</p>
+			每個人內心都有一把自我批評的聲音，它會在自己有過失或不足時，跑出來斥責你、貶低你，這個聲音可能源自於你的家庭或人際相處，有時候這個聲音會過大，而扭曲了事實，也掩蓋了其他美好的部分。<br>
+			別忘了每個人或許都有不足，但同時也有優點與好的自我，在你拼命放大自己的缺點並從別人的話語中找到批評的蛛絲馬跡時，也別忘了留意那個被你遺落但美好、微小的自己。
+		</span>
+		<button class="square" id="finish_close"><span>獲得物品</span></button>
+	</div>
+	<div id="content">
+		<h1 id="title">鏡子裡的尖刺</h1>
+		<div id="script">
+			看著這些如同尖刺一樣的標籤，也許你也曾經覺得自己好像被誤解或指責，感覺到受傷、沮喪，甚至開始懷疑自己是不是有問題，不夠好？<br>
+			讓我們幫小刺蝟撕下那些標籤吧！拿起箱子裡的紙與筆試著改寫與回應那些負向的聲音，讓我們一起發現美好與肯定的力量。
+		</div>
+	</div>
+	<div id="selection">
+		<button class="multiselect" @click="answerSubmit('v')" v-if="have_ans('v')" :disabled="unable('v')">完成</button>
+	</div>
+	<a href="http://counsel.sa.nctu.edu.tw" id="website" target="new_window">交大諮商中心</a>
+</body>
+</html>

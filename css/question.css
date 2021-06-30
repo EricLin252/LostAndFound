@@ -1,0 +1,78 @@
+#background{
+	display: none;
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background-color:rgba(251, 242, 232, 0.7);
+	border-radius: 0%;
+	z-index: 2;
+}
+
+.infor_btn{
+	display: block;
+	position: fixed;
+	width: 20%;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	text-align: center;
+	z-index: 3;
+}
+
+.infor_btn span{
+	display: inline-block;
+	background-color: rgba(255, 255, 255, 0.7);
+	width: 100%;
+	font-weight: bold;
+}
+
+.infor{
+	display: none;
+	position: absolute;
+	padding: 5%;
+	top: 150px;
+	left: 10%;
+	width: 80%;
+	background-color: rgb(255, 255, 255);
+	max-height: 60%;
+	z-index: 3;
+	overflow: scroll;
+}
+
+.infor_title{
+	text-align: center;
+	font-size: large;
+	font-weight: bold;
+	border-bottom: solid 1px rgb(109, 76, 50);
+	border-radius: 0%;
+}
+
+#map_btn{
+	background-image: url("../img/t0.png");
+}
+
+#tip_btn{
+	background-image: url("../img/tip.png");
+	-webkit-transition: -webkit-transform 500ms;
+	transition: transform 500ms;
+}
+
+#finish_close{
+	display: block;
+	width: 40%;
+	margin: auto;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	text-align: center;
+	background-color: transparent;
+}
+
+#finish_close span{
+	display: inline-block;
+	width: 100%;
+	font-weight: bold;
+	color: whitesmoke;
+	background-color: rgb(234, 104, 116);
+}

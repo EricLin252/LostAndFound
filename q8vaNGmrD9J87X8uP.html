@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>小刺蝟的失物招領-刺刺的異想園地</title>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script src="js/migrate.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
+	<script src="js/database.js"></script>
+	<script src="js/question.js"></script>
+	<script src="js/db_normal.js"></script>
+	<link rel="stylesheet" href="css/normal.css">
+	<link rel="stylesheet" href="css/question.css">
+	<link rel="stylesheet" href="css/q8.css">
+</head>
+<body>
+	<div id="loading">
+		<div id="loading_block">
+			<div class="square" id="loading_bg"></div>
+			<div id="loading_script">Loading...<br>請直放手機遊玩</div>
+		</div>
+	</div>
+	<a class="square infor_btn" id="map_btn" href="index.html"><span>回地圖</span></a>
+	<div id="background"></div>
+	<button class="square infor_btn" id="tip_btn"><span>小提示</span></button>
+	<div class="infor" id="tip">
+		<p class="infor_title" style="margin: 10px; margin-top: 0px;">小提示</p>
+		請於答案欄回答自己可能喜歡、享受其中、做得不錯、擅長、或優勢的部分。
+	</div>
+	<div class="infor" id="finish_script">
+		<span>
+			<p class="infor_title" style="margin: 10px; margin-top: 0px;">完成任務</p>
+			謝謝你幫忙小刺蝟找尋到這些遺失的物品，在這趟尋找過程中或許你拾獲曾經遺忘的某個片段、勾起了某些回憶，甚至看見遺失的自己…<br>
+			相信過往的許多挫折、受傷的經驗，在人生慢慢的路途中使我們漸漸成為完整的人，同時也別忘了，我們都有屬於自己美好的部分等著我們去發現！
+		</span>
+		<button class="square" id="finish_close"><span>獲得物品</span></button>
+	</div>
+	<div id="content">
+		<h1 id="title">刺刺的異想園地</h1>
+		<div id="script">
+			小刺蝟經歷了那麼多的事情，慢慢的他找到自己的小天地…<br>
+			回到你身上，你有沒有屬於自己美好的小天地呢？讓我們停下來，發現自己優勢吧！
+		</div>
+	</div>
+	<div id="selection">
+		<textarea type="text" id="type_ans" v-model="db_ans" :disabled="have_text" placeholder="輸入你的答案吧"></textarea>
+		<button class="multiselect" @click="textSubmit" v-if="!have_text">完成</button>
+	</div>
+	<a href="http://counsel.sa.nctu.edu.tw" id="website" target="new_window">交大諮商中心</a>
+</body>
+</html>

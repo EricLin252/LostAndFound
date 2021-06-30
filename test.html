@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
+	<script>
+		var firebaseConfig = {
+			apiKey: "AIzaSyCDzwv3_e8alepAAkHmGbjT6f3VXEO1ruk",
+			authDomain: "icebrickhunt.firebaseapp.com",
+			databaseURL: "https://icebrickhunt.firebaseio.com",
+			projectId: "icebrickhunt",
+			storageBucket: "icebrickhunt.appspot.com",
+			messagingSenderId: "859695415101",
+			appId: "1:859695415101:web:3a492972a0e384d73d0f54"
+		};
+		firebase.initializeApp(firebaseConfig);
+
+		var db = firebase.database();
+
+		var loginUser;
+		firebase.auth().onAuthStateChanged((user) => {
+			if(user){
+				loginUser = user;
+				var ans = 0;
+				document.getElementById("login").style.display = "none";
+				db.ref("/users").once("value")
+				.then((d) => {
+					if(d.exists()){
+						var a = d.val();
+						for(var x in a){
+							var y = d.child(x).val();
+							if(y["LostAndFound"] && y["LostAndFound"]["q8"]) ans++;
+						}
+						document.getElementById("ans").innerHTML = ans;
+					}
+				})
+				.catch((err) => {
+					window.alert('登入或是創建帳號時資料發生錯誤，請聯絡工作人員，或是使用 "登入發生問題"');
+					firebase.auth().signOut();
+					console.log(err.code + ": " + err.message);
+				});
+			}
+			else{
+				document.getElementById("login").style.display = "block";
+			}
+		});
+
+		function login(email, password){
+			firebase.auth().signInWithEmailAndPassword(email, password)
+			.then((user) => {
+				loginUser = user;
+			})
+			.catch((err) => {
+				if(err.code == "auth/invalid-email") window.alert("email格式錯誤");
+				else if(err.code == "auth/user-not-found") window.alert("你還沒創建帳號喔！");
+				else if(err.code == "auth/wrong-password") window.alert("密碼錯誤");
+				else window.alert('登入或是創建帳號時資料發生錯誤，請聯絡工作人員，或是使用 "登入發生問題"');
+				console.log(err.code + ": " + err.message);
+			});
+		}
+
+		function submit(){
+			var email = document.getElementById("account").value;
+			var password = document.getElementById("password").value;
+			login(email, password);
+		}
+	</script>
+<script>
+</script>
+</head>
+<div id="login">
+	帳號: <input type="text" id="account"><br>
+	密碼: <input type="password" id="password"><br>
+	<button onclick="submit()">確認</button>
+</div>
+<div id="ans"></div>
+<body>
+</body>
+</html>

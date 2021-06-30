@@ -1,0 +1,97 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+*{
+	font-family: "Noto Sans TC", "微軟正黑體", Sans-serif;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	color: rgb(70, 70, 70);
+	border-radius: 10px;
+	padding: 0%;
+	margin: 0%;
+}
+
+*:focus{
+	outline: none;
+}
+
+html, body{
+	height: 100%;
+	overflow: hidden;
+	margin: 0%;
+}
+
+input, textarea{
+	background-color: rgba(185, 200, 230, 0.5);
+	border-style: solid;
+	border-color: rgba(70, 70, 70, 0.5);
+	border-width: 1px;
+	text-align: center;
+	vertical-align: top;
+}
+
+input:focus, textarea:focus{
+	background-color: whitesmoke;
+}
+
+button{
+	border-style: none;
+	vertical-align: top;
+}
+
+.square::before{
+	display: block;
+	padding-top: 100%;
+	content: "";
+}
+
+.centered{
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+}
+
+#loading{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	z-index: 4;
+	border-radius: 0%;
+}
+
+#loading_block{
+	position: relative;
+	width: 60%;
+	margin: auto;
+	top: 25%;
+}
+
+#loading_bg{
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+#loading_script{
+	text-align: center;
+}
+
+#website{
+	display: block;
+	position: fixed;
+	bottom: 0%;
+	left: 30%;
+	width: 40%;
+	font-size: 15px;
+	text-align: center;
+}
+
+@media screen and (max-height: 550px){
+#website{
+	display: none;
+}
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>小刺蝟的失物招領-被忽視的善意</title>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script src="js/migrate.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
+	<script src="js/database.js"></script>
+	<script src="js/question.js"></script>
+	<script src="js/db_normal.js"></script>
+	<link rel="stylesheet" href="css/normal.css">
+	<link rel="stylesheet" href="css/question.css">
+	<link rel="stylesheet" href="css/q2.css">
+</head>
+<body>
+	<div id="loading">
+		<div id="loading_block">
+			<div class="square" id="loading_bg"></div>
+			<div id="loading_script">Loading...<br>請直放手機遊玩</div>
+		</div>
+	</div>
+	<a class="square infor_btn" id="map_btn" href="index.html"><span>回地圖</span></a>
+	<div id="background"></div>
+	<button class="square infor_btn" id="tip_btn"><span>小提示</span></button>
+	<div class="infor" id="tip">
+		<p class="infor_title" style="margin: 10px; margin-top: 0px;">小提示</p>
+		請在選項當中，選出你會如何面對故事中小刺蝟遇到的情景。<br>
+		（本題無正確答案喔！依照你平時面對衝突的習慣與態度作答吧！）
+	</div>
+	<div class="infor" id="finish_script">
+		<span>
+			<p class="infor_title" style="margin: 10px; margin-top: 0px;">完成任務</p>
+			面對衝突時，我們都有習慣的因應姿態，或許是沉默忍耐、正面交鋒，又或是以牙還牙…等，不同的因應方式，會導致不同的關係發展結果。<br>
+			相信這些因應方式不管對錯好壞，都有你選擇用這個方式去溝通的背後原因。<br>
+			但如果能夠有效面對衝突，我們就能把衝突帶來的破壞力量，轉化為彼此靠近的契機。<br>
+			因此遇到衝突時，我們可以有以下幾個技巧：<br>
+			1. 軟化：減少指責，用「我」開頭表達感受。<br>
+			2. 和好：表達自己是多麼看重彼此關係。<br>
+			3. 安撫：情緒恢復後，再進行溝通。<br>
+			4. 妥協：放下身段，站在對方的立場。<br>
+			5. 包容：在愛裡，相互尊重和理解。
+		</span>
+		<button class="square" id="finish_close"><span>獲得物品</span></button>
+	</div>
+	<div id="content">
+		<h1 id="title">被忽視的善意</h1>
+		<div id="script">
+			小刺蝟看電視被打擾、突然莫名其妙被踩，原本用娃娃保護刺刺的善意，還被這樣無所謂的對待。<br>
+			看到松鼠弟弟踩到自己還若無其事的樣子，小刺蝟覺得好生氣！<br>
+			這時候如果你是小刺蝟，你會怎麼做？
+		</div>
+	</div>
+	<div id="selection">
+		<button class="multiselect" @click="answerSubmit(1)" v-if="have_ans(1)" :disabled="unable(1)">翻個白眼，自認倒楣</button>
+		<button class="multiselect" @click="answerSubmit(2)" v-if="have_ans(2)" :disabled="unable(2)">默默承受，覺得他應該也不是故意的</button>
+		<button class="multiselect" @click="answerSubmit(4)" v-if="have_ans(3)" :disabled="unable(3)">氣死人了，也用刺刺刺回去！</button>
+		<button class="multiselect" @click="answerSubmit(5)" v-if="have_ans(4)" :disabled="unable(4)">先忍耐，之後再找時機報復</button>
+		<button class="multiselect" @click="answerSubmit(7)" v-if="have_ans(5)" :disabled="unable(5)">其他，請寫在刺蝟筆記本的空白處</button>
+	</div>
+	<a href="http://counsel.sa.nctu.edu.tw" id="website" target="new_window">交大諮商中心</a>
+</body>
+</html>
